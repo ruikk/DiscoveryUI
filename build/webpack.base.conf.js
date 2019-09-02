@@ -82,9 +82,6 @@ module.exports = {
     child_process: 'empty'
   },
   plugins: [
-    new MonacoWebpackPlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
+    new MonacoWebpackPlugin()
   ]
 }

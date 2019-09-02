@@ -6,20 +6,11 @@
  * @date 2019/8/26
  */
 <template>
-  <div>
-    <organization-chart :datasource="ds">
-      <template slot-scope="ds">
-        <span class="office">${data.office}</span>
-        <div class="title">${data.name}</div>
-        <div class="content">${data.title}</div>
-      </template>
-    </organization-chart>
-  </div>
+  <div id="chart-container"></div>
 </template>
 <script>
 import OrganizationChart from 'vue-organization-chart'
 import 'vue-organization-chart/dist/orgchart.css'
-import $ from 'jquery'
 
 export default {
   components: {
@@ -28,25 +19,25 @@ export default {
   data () {
     return {
       ds: {
-        'id': '1',
-        'name': 'discovery-gray-group',
-        'title': 'Nacos',
-        'office': 'sdfs',
+        'serviceType': 'nacos',
+        'serviceUrl': 'http://localhost:2222',
+        'title': 'discovery-gray-group',
+        'port': '2222',
+        'version': '1.0',
         'children': [
-          { 'id': '2', 'name': 'Bo Miao', 'title': 'department managerdfsdfsadfafwasjdajsdf kjsdkjfwpijf' },
-          { 'id': '3', 'name': 'Su Miao', 'title': 'department manager',
+          { 'title': 'discovery-gray-gateway', 'serviceUrl': '192.168.2.2', 'serviceType': 'gateway', 'port': '5001', 'version': '1.0' },
+          { 'name': 'Su Miao', 'title': 'department manager', 'office': '北戴河',
             'children': [
-              { 'id': '4', 'name': 'Tie Hua', 'title': 'senior engineer' },
-              { 'id': '5', 'name': 'Hei Hei', 'title': 'senior engineer',
-                'children': [
-                  { 'id': '6', 'name': 'Pang Pang', 'title': 'engineer' },
-                  { 'id': '7', 'name': 'Xiang Xiang', 'title': 'UE engineer' }
-                ]
-              }
+              { 'name': 'Tie Hua', 'title': 'senior engineer', 'office': '北戴河' },
+              { 'name': 'Hei Hei', 'title': 'senior engineer', 'office': '北戴河' }
             ]
           },
-          { 'id': '8', 'name': 'Hong Miao', 'title': 'department manager' },
-          { 'id': '9', 'name': 'Chun Miao', 'title': 'department manager' }
+          { 'name': 'Yu Jie', 'title': 'department manager', 'office': '长春' },
+          { 'name': 'Yu Li', 'title': 'department manager', 'office': '长春' },
+          { 'name': 'Hong Miao', 'title': 'department manager', 'office': '长春' },
+          { 'name': 'Yu Wei', 'title': 'department manager', 'office': '长春' },
+          { 'name': 'Chun Miao', 'title': 'department manager', 'office': '长春' },
+          { 'name': 'Yu Tie', 'title': 'department manager', 'office': '长春' }
         ]
       }
     }
@@ -55,10 +46,33 @@ export default {
 
   },
   mounted () {
+    var nodeTemplate = function(data) {
+      return `
+        <div class="title">${data.title}</div>
+        <div class="content">
+          <span>服务类型: ${data.serviceType}</span><br>
+          <span>服务地址: ${data.serviceUrl}</span><br>
+          <span>服务端口: ${data.port}</span><br>
+          <span>服务版本: ${data.version}</span>
+        </div>
+      `;
+    };
 
+    var oc = $('#chart-container').orgchart({
+      'data' : this.ds,
+      'nodeTemplate': nodeTemplate
+    });
   },
   methods: {
 
   }
 }
 </script>
+<style>
+.orgchart .node {
+  width: auto !important;
+}
+.content {
+  height: auto !important;
+}
+</style>
