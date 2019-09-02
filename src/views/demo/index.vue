@@ -26,18 +26,19 @@ export default {
         'version': '1.0',
         'children': [
           { 'title': 'discovery-gray-gateway', 'serviceUrl': '192.168.2.2', 'serviceType': 'gateway', 'port': '5001', 'version': '1.0' },
-          { 'name': 'Su Miao', 'title': 'department manager', 'office': '北戴河',
+          { 'title': 'discovery-gray-service-a','serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '3001,3002', 'version': '1.1,1.0',
             'children': [
-              { 'name': 'Tie Hua', 'title': 'senior engineer', 'office': '北戴河' },
-              { 'name': 'Hei Hei', 'title': 'senior engineer', 'office': '北戴河' }
+              { 'title': 'discovery-gray-service-a', 'serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '3002', 'version': '1.1'  },
+              { 'title': 'discovery-gray-service-a', 'serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '3001', 'version': '1.0'  }
             ]
           },
-          { 'name': 'Yu Jie', 'title': 'department manager', 'office': '长春' },
-          { 'name': 'Yu Li', 'title': 'department manager', 'office': '长春' },
-          { 'name': 'Hong Miao', 'title': 'department manager', 'office': '长春' },
-          { 'name': 'Yu Wei', 'title': 'department manager', 'office': '长春' },
-          { 'name': 'Chun Miao', 'title': 'department manager', 'office': '长春' },
-          { 'name': 'Yu Tie', 'title': 'department manager', 'office': '长春' }
+          { 'title': 'discovery-gray-service-b','serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '4001,4002', 'version': '1.1,1.0',
+            'children': [
+              { 'title': 'discovery-gray-service-b', 'serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '4002', 'version': '1.1'  },
+              { 'title': 'discovery-gray-service-b', 'serviceUrl': '192.168.2.2', 'serviceType': 'service', 'port': '4001', 'version': '1.0'  }
+            ]
+          },
+          { 'title': 'discovery-gray-zuul', 'serviceUrl': '192.168.2.2', 'serviceType': 'gateway', 'port': '5002', 'version': '1.0' },
         ]
       }
     }
@@ -60,7 +61,8 @@ export default {
 
     var oc = $('#chart-container').orgchart({
       'data' : this.ds,
-      'nodeTemplate': nodeTemplate
+      'nodeTemplate': nodeTemplate,
+      'toggleSiblingsResp': true
     });
   },
   methods: {
@@ -69,10 +71,22 @@ export default {
 }
 </script>
 <style>
-.orgchart .node {
+.orgchart .node .title {
   width: auto !important;
 }
 .content {
   height: auto !important;
+}
+#chart-container {
+  position: relative;
+  display: inline-block;
+  top: 10px;
+  left: 10px;
+  height: 520px;
+  width: calc(100% - 24px);
+  border: 2px dashed #aaa;
+  border-radius: 5px;
+  overflow: auto;
+  text-align: center;
 }
 </style>
