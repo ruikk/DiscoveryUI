@@ -7,12 +7,19 @@
  */
 <template>
   <div>
-    <organization-chart :datasource="ds" :nodeTemplate="nodeTemplate"></organization-chart>
+    <organization-chart :datasource="ds">
+      <template slot-scope="ds">
+        <span class="office">${data.office}</span>
+        <div class="title">${data.name}</div>
+        <div class="content">${data.title}</div>
+      </template>
+    </organization-chart>
   </div>
 </template>
 <script>
 import OrganizationChart from 'vue-organization-chart'
 import 'vue-organization-chart/dist/orgchart.css'
+import $ from 'jquery'
 
 export default {
   components: {
@@ -51,13 +58,7 @@ export default {
 
   },
   methods: {
-    nodeTemplate (data) {
-      return `
-        <span class="office">${data.office}</span>
-        <div class="title">${data.name}</div>
-        <div class="content">${data.title}</div>
-      `;
-    }
+
   }
 }
 </script>
