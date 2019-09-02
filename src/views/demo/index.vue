@@ -7,7 +7,7 @@
  */
 <template>
   <div>
-    <organization-chart :datasource="ds"></organization-chart>
+    <organization-chart :datasource="ds" :nodeTemplate="nodeTemplate"></organization-chart>
   </div>
 </template>
 <script>
@@ -24,6 +24,7 @@ export default {
         'id': '1',
         'name': 'discovery-gray-group',
         'title': 'Nacos',
+        'office': 'sdfs',
         'children': [
           { 'id': '2', 'name': 'Bo Miao', 'title': 'department managerdfsdfsadfafwasjdajsdf kjsdkjfwpijf' },
           { 'id': '3', 'name': 'Su Miao', 'title': 'department manager',
@@ -42,9 +43,21 @@ export default {
         ]
       }
     }
+  },
+  created () {
+
+  },
+  mounted () {
+
+  },
+  methods: {
+    nodeTemplate (data) {
+      return `
+        <span class="office">${data.office}</span>
+        <div class="title">${data.name}</div>
+        <div class="content">${data.title}</div>
+      `;
+    }
   }
 }
 </script>
-<style>
-
-</style>
