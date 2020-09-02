@@ -1,11 +1,9 @@
 # Nepxion DiscoveryUI
-[![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/DiscoveryUI/blob/master/LICENSE)
+[![Total lines](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines)](https://tokei.rs/b1/github/Nepxion/DiscoveryUI?category=lines) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?label=license)](https://github.com/Nepxion/DiscoveryUI/blob/master/LICENSE)  [![Stars](https://img.shields.io/github/stars/Nepxion/DiscoveryUI.svg?label=Stars&tyle=flat&logo=GitHub)](https://github.com/Nepxion/DiscoveryUI/stargazers)  [![Stars](https://gitee.com/Nepxion/DiscoveryUI/badge/star.svg)](https://gitee.com/nepxion/DiscoveryUI/stargazers)
 
 ## 简介
 
 Nepxion DiscoveryUI is a web framework based on Vue for Nepxion Discovery project [http://www.nepxion.com](http://www.nepxion.com/)
-
-参考[入门教程](https://github.com/Nepxion/Docs/raw/master/discovery-doc/README_QUICK_START.md)
 
 ## 准备工作
 
@@ -34,7 +32,7 @@ npm run build
 npm run build --report
 ```
 
-也可以[下载](https://github.com/Nepxion/DiscoveryUI/releases)已发布版本。可以直接运行nginx，浏览器访问[http://localhost:8080](http://localhost:8080)，可通过nginx配置(conf/nginx.conf)修改端口
+也可以[下载](https://github.com/Nepxion/DiscoveryUI/releases)已发布版本。可以直接运行Nginx，浏览器访问[http://localhost:8080](http://localhost:8080)，可通过Nginx配置(conf/nginx.conf)修改端口
 
 ## 界面展示
 
